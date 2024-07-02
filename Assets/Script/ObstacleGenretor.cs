@@ -7,9 +7,11 @@ public class ObstacleGenerator : MonoBehaviour
     public float maxTotalSizeX = 8f;
     public float posZ;
     public float spaceBetweenObstacle;
+    public int seed;
 
     void Start()
     {
+        Random.InitState(seed);
         GenerateObstacles();
     }
 
