@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour
     public float scoreSpeed = 0.05f;
     public GameObject newHighScore;
     public GameObject newHighScoreComplete;
+    public bool isStart;
 
     public int bestScore;
 
@@ -33,19 +34,25 @@ public class ScoreManager : MonoBehaviour
 
 
 
-        // Commence à mettre à jour le score seulement si le jeu n'est pas terminé
-        if (!isGameOver)
-        {
-            InvokeRepeating("UpdateScore", 0.0f, scoreSpeed);
-        }
+       
+
     }
 
-    void UpdateScore()
+    public void UpdatingScore()
+    {
+        
+        InvokeRepeating("UpdateScore", 0.0f, scoreSpeed);
+        
+    }
+
+    public void UpdateScore()
     {
         score++;
         // Met à jour le texte affichant le score
         scoreText.text = score.ToString();
     }
+
+   
 
     // Appelé lorsque le jeu est terminé (Game Over)
     public void GameOver()

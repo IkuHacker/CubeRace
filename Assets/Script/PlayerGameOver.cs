@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
-public class GameOver : MonoBehaviour
+public class PlayerGameOver : MonoBehaviour
 {
     // Start is called before the first frame update
     [Header("Paramètres du joueur")]
@@ -69,10 +70,13 @@ public class GameOver : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Portal"))
         {
+            StartCoroutine(SpeedPause());
             ScoreManager.instance.GameOver();
             GameCompletePanel.SetActive(true);
             scoreGameComplete.text = "SCORE: " + ScoreManager.instance.score;
             highScoreGameComplete.text = ScoreManager.instance.bestScore.ToString();
+            Debug.Log(Time.timeScale);
+
 
         }
     }
@@ -130,6 +134,16 @@ public class GameOver : MonoBehaviour
         rend = piece.GetComponent<Renderer>();
         rend.enabled = true;
         rend.sharedMaterial = blue;
+    }
+
+    IEnumerator SpeedPause() 
+    {
+        for (int i = 0; i < 100f; i++)
+        {
+            yield return new WaitForSeconds(0.02f);
+            Time.timeScale = Time.timeScale - 0.01f;
+            Debug.Log(Time.timeScale);
+        }
     }
 
 }
