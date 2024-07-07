@@ -1397,7 +1397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334ea818508200642a23e2a69ff3e750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: Level Test
+  levelToLoad: GameModeSelection
   settingsWindow: {fileID: 218940860}
 --- !u!1 &257639877
 GameObject:
