@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public class ObstacleGenerator : MonoBehaviour
+public class ObstacleGenretor : MonoBehaviour
 {
     public GameObject cubePrefab;
     public GameObject plateformPrefab;
@@ -29,8 +29,7 @@ public class ObstacleGenerator : MonoBehaviour
 
     void Start()
     {
-
-        
+        seed = StateNameController.seeds;
         if (isEndlessRunner) 
         {
             player.position = playerSpawn.position;
