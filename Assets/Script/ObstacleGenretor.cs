@@ -16,7 +16,7 @@ public class ObstacleGenretor : MonoBehaviour
     private int obstacleCount;
     public float maxTotalSizeX = 8f;
     private int countboucle;
-    private float posZ;
+    public float posZ;
     public float spaceBetweenObstacle;
     public int seed;
 
@@ -27,6 +27,20 @@ public class ObstacleGenretor : MonoBehaviour
 
     private List<GameObject> obstacleList = new List<GameObject>();
     public int maxObstacleCount;
+
+    public static ObstacleGenretor instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("Il y a plus d'une instance de ScoreManager dans la scène");
+            return;
+        }
+
+        instance = this;
+    }
+
 
     void Start()
     {
