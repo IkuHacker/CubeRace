@@ -3104,18 +3104,15 @@ MonoBehaviour:
   cubePrefab: {fileID: 4846136961865912900, guid: d9ffb061252fb8d4a979f3adfb97226c, type: 3}
   plateformPrefab: {fileID: 1099740222}
   plateformInitial: {fileID: 220914608}
+  distanecCalculatorObject: {fileID: 1214384803}
   player: {fileID: 5742780134334502391}
   plateformTransform: {fileID: 220914609}
   playerSpawn: {fileID: 745271694}
   maxTotalSizeX: 8
-  countboucle: 0
-  posZ: 0
   spaceBetweenObstacle: 20
   seed: 805
-  isEndlessRunner: 1
-  plateformList: []
+  isEndlessRunner: 0
   maxPlateformCount: 20
-  obstacleList: []
   maxObstacleCount: 100
 --- !u!4 &1036569715
 Transform:
@@ -3356,7 +3353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1128095098
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3613,7 +3610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1214384804
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3893,7 +3890,7 @@ Transform:
   m_GameObject: {fileID: 1320868243}
   serializedVersion: 2
   m_LocalRotation: {x: 0.14763674, y: 0, z: 0, w: 0.9890417}
-  m_LocalPosition: {x: 0, y: 3.1, z: 560.2}
+  m_LocalPosition: {x: 0, y: 3.1, z: 582.2}
   m_LocalScale: {x: 1.58, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4472,7 +4469,7 @@ RectTransform:
   m_Father: {fileID: 1214384804}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.000030518, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4802,7 +4799,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1790223336
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5683,7 +5680,7 @@ Transform:
   m_GameObject: {fileID: 226642542661713553}
   serializedVersion: 2
   m_LocalRotation: {x: 0.14763674, y: 0, z: 0, w: 0.9890417}
-  m_LocalPosition: {x: 0, y: 3.1, z: 560.2}
+  m_LocalPosition: {x: 0, y: 3.1, z: 582.2}
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5878,7 +5875,7 @@ Transform:
   m_GameObject: {fileID: 4442636689653964425}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 569.5}
+  m_LocalPosition: {x: 0, y: 1, z: 591.5}
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
