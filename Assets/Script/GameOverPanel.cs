@@ -3,10 +3,18 @@ using UnityEngine.SceneManagement;
 
 public class GameOverPanel : MonoBehaviour
 {
-    public string levelToLoad;
+    public bool isInfiniteLevel;
     public void RestartGame()
     {
-        SceneManager.LoadScene(levelToLoad);
+        if (isInfiniteLevel) 
+        {
+            SceneManager.LoadScene("InfiniteLevel");
+        }
+        else 
+        {
+            SceneManager.LoadScene("MainEndlessScene");
+        }
+        
     }
 
     public void MainMenu()

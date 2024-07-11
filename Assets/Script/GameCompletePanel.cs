@@ -3,16 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class GameCompletePanel : MonoBehaviour
 {
-    public string levelToLoad;
-    public string nextLevelToLoad;
     public void RestartGame()
     {
-        SceneManager.LoadScene(levelToLoad);
+        SceneManager.LoadScene("MainEndlessScene");
     }
 
     public void NextGame()
     {
-        SceneManager.LoadScene(nextLevelToLoad);
+        StateNameController.seeds++;
+        SceneManager.LoadScene("MainEndlessScene");
     }
 
     public void MainMenu()

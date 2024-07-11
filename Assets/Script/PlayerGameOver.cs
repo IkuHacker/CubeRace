@@ -17,6 +17,9 @@ public class PlayerGameOver : MonoBehaviour
     public Text scoreGameComplete;
     public Text highScoreGameComplete;
     public Text DistanceGameOver;
+    public Text highDistanceGameOver;
+    public Text coinCount;
+    public Text coinCountComplete;
 
     [Header("Paramètres du cube")]
     public float cubeSize = 0.2f;
@@ -29,6 +32,8 @@ public class PlayerGameOver : MonoBehaviour
 
     [Header("Materiel")]
     public Material blue;
+
+    public bool isEndlessRunner;
 
     float cubesPivotDistance;
     Vector3 cubesPivot;
@@ -52,29 +57,48 @@ public class PlayerGameOver : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            ScoreManager.instance.GameOver();
+            if (isEndlessRunner)
+            {
+                ScoreDistanceManager.instance.GameOver();
+
+            }
+            else
+            {
+                ScoreManager.instance.GameOver();
+            }
+
+           
             parent.transform.position = player.transform.position;
             cameara.transform.parent = parent.transform;
             explode();
             GameOverPanel.SetActive(true);
-            scoreGameOver.text = "SCORE: " + ScoreManager.instance.score;
-            highScoreGameOver.text = ScoreManager.instance.bestScore.ToString();
-            float unite = 1f;  // Pour arrondir à une décimale
 
-            float valeurArrondie = Mathf.Round(DistanceCalculator.instance.distanceToPortal / unite) * unite;
-            float distanceGame = 800 - valeurArrondie;
+            if (isEndlessRunner) 
+            {
 
-            DistanceGameOver.text = "DISTANCE:  " + distanceGame + "m";
+                
+                DistanceGameOver.text = "DISTANCE:  " + ScoreDistanceManager.instance.distance + "m";
+                highDistanceGameOver.text = ScoreDistanceManager.instance.bestDistance.ToString();
 
+            }
+            else
+            {
+                scoreGameOver.text = "SCORE: " + ScoreManager.instance.score;
+                highScoreGameOver.text = ScoreManager.instance.bestScore.ToString();
+            }
+
+
+            coinCount.text = "SPHERA: " + SpheraGenerator.instance.spheraCoint.ToString();
         }
 
         if (collision.gameObject.CompareTag("Portal"))
         {
             StartCoroutine(SpeedPause());
-            ScoreManager.instance.GameOver();
+            ScoreDistanceManager.instance.GameOver();
+            DistanceGameOver.text = "DISTANCE:  " + ScoreDistanceManager.instance.distance + "m";
+            highDistanceGameOver.text = ScoreDistanceManager.instance.bestDistance.ToString();
             GameCompletePanel.SetActive(true);
-            scoreGameComplete.text = "SCORE: " + ScoreManager.instance.score;
-            highScoreGameComplete.text = ScoreManager.instance.bestScore.ToString();
+            coinCountComplete.text = "SPHERA: " + SpheraGenerator.instance.spheraCoint.ToString();
             Debug.Log(Time.timeScale);
 
 
@@ -140,7 +164,7 @@ public class PlayerGameOver : MonoBehaviour
     {
         for (int i = 0; i < 100f; i++)
         {
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.05f);
             Time.timeScale = Time.timeScale - 0.01f;
             Debug.Log(Time.timeScale);
         }

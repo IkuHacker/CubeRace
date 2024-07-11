@@ -13,7 +13,7 @@ public class ObstacleGenretor : MonoBehaviour
     public Transform plateformTransform;
     public Transform playerSpawn;
 
-    private int obstacleCount;
+    public int obstacleCount;
     public float maxTotalSizeX = 8f;
     private int countboucle;
     public float posZ;
@@ -44,7 +44,9 @@ public class ObstacleGenretor : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         seed = StateNameController.seeds;
+        plateformInitial.transform.localScale = new Vector3(10, 1, StateNameController.levelSize);
         if (isEndlessRunner) 
         {
             player.position = playerSpawn.position;
@@ -112,7 +114,7 @@ public class ObstacleGenretor : MonoBehaviour
 
             if (obstacleList.Count > maxObstacleCount)
             {
-                for (int i = 0; i < 500; i++)
+                for (int i = 0; i < 200; i++)
                 {
                     Destroy(obstacleList[i]);
                     obstacleList.RemoveAt(i);

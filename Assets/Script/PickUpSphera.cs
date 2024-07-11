@@ -12,8 +12,8 @@ public class PickUpSphera : MonoBehaviour
         }
         else 
         {
+            Debug.Log(col.transform.tag);
             Destroy(gameObject);
-
         }
 
 

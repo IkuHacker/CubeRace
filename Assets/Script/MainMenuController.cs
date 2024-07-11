@@ -3,20 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    public void LoadGame(int input)
+    public void LoadGame(int seed)
     {
-        StateNameController.seeds = input;
+        StateNameController.seeds = seed;
+
         SceneManager.LoadScene("MainEndlessScene");
     }
-    // Start is called before the first frame update
-    void Start()
-    {
 
+    public void LoadSizeLevel(float levelSize) 
+    {
+        StateNameController.levelSize = levelSize;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

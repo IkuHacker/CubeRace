@@ -5,4 +5,5 @@ using UnityEngine;
 public class StateNameController : MonoBehaviour
 {
     public static int seeds;
+    public static float levelSize;
 }

@@ -733,7 +733,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 1100}
+  m_LocalScale: {x: 10, y: 1, z: 200}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1408352337}
@@ -847,7 +847,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: -117}
+  m_AnchoredPosition: {x: 6.0000305, y: -178.68}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &263189092
@@ -1444,8 +1444,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -49.949585, y: -19.685}
-  m_SizeDelta: {x: 220.1008, y: 60.6301}
+  m_AnchoredPosition: {x: 88.70734, y: -19.685}
+  m_SizeDelta: {x: 497.4146, y: 60.6301}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &423816306
 MonoBehaviour:
@@ -2687,6 +2687,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855722122}
   m_CullTransparentMesh: 1
+--- !u!1 &858897010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 858897011}
+  - component: {fileID: 858897013}
+  - component: {fileID: 858897012}
+  m_Layer: 5
+  m_Name: ScoreGame (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &858897011
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858897010}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1046300395}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 31.9591, y: -80.315}
+  m_SizeDelta: {x: 383.9192, y: 60.6301}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &858897012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858897010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8867924, g: 0.09542644, b: 0.019520441, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: afa6b35933c4ef842bb70cf59bd8876b, type: 3}
+    m_FontSize: 42
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 91
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: NEW HIGHDISTANCE !
+--- !u!222 &858897013
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858897010}
+  m_CullTransparentMesh: 1
 --- !u!1 &866701565
 GameObject:
   m_ObjectHideFlags: 0
@@ -2923,7 +3002,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1036569715}
   - component: {fileID: 1036569714}
-  - component: {fileID: 1036569716}
+  - component: {fileID: 1036569717}
+  - component: {fileID: 1036569718}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2950,7 +3030,9 @@ MonoBehaviour:
   player: {fileID: 5742780134334502391}
   plateformTransform: {fileID: 220914609}
   playerSpawn: {fileID: 745271694}
+  obstacleCount: 0
   maxTotalSizeX: 8
+  posZ: 0
   spaceBetweenObstacle: 20
   seed: 0
   isEndlessRunner: 1
@@ -2971,7 +3053,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1036569716
+--- !u!114 &1036569717
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2980,17 +3062,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 1036569713}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6d278d7ab4e8ad43aaecb5d2a349b10, type: 3}
+  m_Script: {fileID: 11500000, guid: 74cdcab3cb7ec3247b22ac62192cbd29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 10622503}
+  spheraCoint: 0
+  spheraPrefab: {fileID: 7620894387722068000, guid: 5b181474c8e246b4a9d41e1115c44dde, type: 3}
+  player: {fileID: 5742780134334502391}
+  seed: 0
+  maxSpheraList: 10000
+--- !u!114 &1036569718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036569713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa7de4a496ce0e44d91cce4231125e7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   isGameOver: 0
-  score: 0
-  scoreSpeed: 0.05
-  newHighScore: {fileID: 0}
-  newHighScoreComplete: {fileID: 774524026}
-  isStart: 0
-  bestScore: 0
+  distance: 0
+  newHighScore: {fileID: 858897010}
+  plateform: {fileID: 220914609}
+  bestDistance: 0
 --- !u!1 &1046300394
 GameObject:
   m_ObjectHideFlags: 0
@@ -3025,6 +3121,7 @@ RectTransform:
   - {fileID: 866701566}
   - {fileID: 1463378625}
   - {fileID: 423816305}
+  - {fileID: 858897011}
   - {fileID: 263189091}
   - {fileID: 1539897026}
   m_Father: {fileID: 1307633526}
@@ -4418,7 +4515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.0000381, y: -74.32}
+  m_AnchoredPosition: {x: 6, y: -136}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1539897027
@@ -4589,7 +4686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   counterText: {fileID: 1790223339}
   playerMovement: {fileID: 3472505460708466664}
-  scoreManager: {fileID: 1036569716}
+  scoreManager: {fileID: 0}
 --- !u!114 &1790223339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5707,13 +5804,17 @@ MonoBehaviour:
   highScoreGameOver: {fileID: 798726318}
   scoreGameComplete: {fileID: 902364151}
   highScoreGameComplete: {fileID: 602215926}
-  DistanceGameOver: {fileID: 0}
+  DistanceGameOver: {fileID: 423816306}
+  highDistanceGameOver: {fileID: 798726318}
+  coinCount: {fileID: 1463378626}
+  coinCountComplete: {fileID: 855722124}
   cubeSize: 0.2
   cubesInRow: 5
   explosionForce: 50
   explosionRadius: 4
   explosionUpward: 0.4
   blue: {fileID: 2100000, guid: 13fc4ca9ced13084ca2e19e8d2764d7b, type: 2}
+  isEndlessRunner: 1
 --- !u!4 &7480735008763864851
 Transform:
   m_ObjectHideFlags: 0
