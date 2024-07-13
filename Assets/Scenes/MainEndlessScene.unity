@@ -2166,6 +2166,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605509543}
   m_CullTransparentMesh: 1
+--- !u!1 &608334249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 608334250}
+  m_Layer: 0
+  m_Name: HatPlacePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &608334250
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608334249}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.47, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5742780134334502391}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &609719287
 GameObject:
   m_ObjectHideFlags: 0
@@ -3004,6 +3035,7 @@ GameObject:
   - component: {fileID: 1036569714}
   - component: {fileID: 1036569717}
   - component: {fileID: 1036569718}
+  - component: {fileID: 1036569719}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3087,6 +3119,22 @@ MonoBehaviour:
   newHighScore: {fileID: 858897010}
   plateform: {fileID: 220914609}
   bestDistance: 0
+--- !u!114 &1036569719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036569713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5c44ae61b8fb974eabcf4011fe85fdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinManager: {fileID: 0}
+  hatManager: {fileID: 0}
+  defaultSkin: {fileID: 0}
+  isInGame: 1
 --- !u!1 &1046300394
 GameObject:
   m_ObjectHideFlags: 0
@@ -4464,8 +4512,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09835f98c32d854885daec94af48d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: Level Test
-  nextLevelToLoad: Level Test
 --- !u!114 &1481989413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4478,7 +4524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 074f5a831af22de42a407b20cf6a1f79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: Level Test
+  isInfiniteLevel: 0
 --- !u!1 &1539897025
 GameObject:
   m_ObjectHideFlags: 0
@@ -5712,6 +5758,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7480735008763864851}
+  - {fileID: 608334250}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6386053938371415350
@@ -5813,7 +5860,7 @@ MonoBehaviour:
   explosionForce: 50
   explosionRadius: 4
   explosionUpward: 0.4
-  blue: {fileID: 2100000, guid: 13fc4ca9ced13084ca2e19e8d2764d7b, type: 2}
+  hatPoint: {fileID: 608334250}
   isEndlessRunner: 1
 --- !u!4 &7480735008763864851
 Transform:

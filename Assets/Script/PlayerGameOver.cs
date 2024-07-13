@@ -31,7 +31,7 @@ public class PlayerGameOver : MonoBehaviour
     public float explosionUpward = 0.4f;
 
     [Header("Materiel")]
-    public Material blue;
+    public Transform hatPoint;
 
     public bool isEndlessRunner;
 
@@ -40,6 +40,12 @@ public class PlayerGameOver : MonoBehaviour
     Renderer rend;
     void Start()
     {
+        Renderer playerRend = player.GetComponent<Renderer>();
+        playerRend.enabled = true;
+        playerRend.sharedMaterial = StateNameController.currentMaterialEquiped ;
+
+        GameObject hatObject = Instantiate(StateNameController.currentHatEquiped, hatPoint.position, Quaternion.identity);
+        hatObject.transform.parent = hatPoint;
         //calculate pivot distance
         cubesPivotDistance = cubeSize * cubesInRow / 2;
         //use this value to create pivot vector)
@@ -55,16 +61,21 @@ public class PlayerGameOver : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
+
         if (collision.gameObject.CompareTag("Obstacle"))
         {
+            StateNameController.spheraCount += SpheraGenerator.instance.spheraCoint;
+
             if (isEndlessRunner)
             {
                 ScoreDistanceManager.instance.GameOver();
+                SavedSystem.instance.SaveDataCoin();
 
             }
             else
             {
                 ScoreManager.instance.GameOver();
+                SavedSystem.instance.SaveDataCoin();
             }
 
            
@@ -89,6 +100,7 @@ public class PlayerGameOver : MonoBehaviour
 
 
             coinCount.text = "SPHERA: " + SpheraGenerator.instance.spheraCoint.ToString();
+            
         }
 
         if (collision.gameObject.CompareTag("Portal"))
@@ -99,7 +111,8 @@ public class PlayerGameOver : MonoBehaviour
             highDistanceGameOver.text = ScoreDistanceManager.instance.bestDistance.ToString();
             GameCompletePanel.SetActive(true);
             coinCountComplete.text = "SPHERA: " + SpheraGenerator.instance.spheraCoint.ToString();
-            Debug.Log(Time.timeScale);
+            StateNameController.spheraCount += SpheraGenerator.instance.spheraCoint;
+            SavedSystem.instance.SaveDataCoin();
 
 
         }
@@ -157,7 +170,7 @@ public class PlayerGameOver : MonoBehaviour
         piece.GetComponent<Rigidbody>().mass = cubeSize;
         rend = piece.GetComponent<Renderer>();
         rend.enabled = true;
-        rend.sharedMaterial = blue;
+        rend.sharedMaterial = StateNameController.currentMaterialEquiped;
     }
 
     IEnumerator SpeedPause() 
@@ -166,7 +179,6 @@ public class PlayerGameOver : MonoBehaviour
         {
             yield return new WaitForSeconds(0.05f);
             Time.timeScale = Time.timeScale - 0.01f;
-            Debug.Log(Time.timeScale);
         }
     }
 

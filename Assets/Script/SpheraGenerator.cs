@@ -31,6 +31,7 @@ public class SpheraGenerator : MonoBehaviour
     }
     void Start()
     {
+
         spheraCount = (int)(ObstacleGenretor.instance.obstacleCount * 1.5f);
 
         seed = StateNameController.seeds;
