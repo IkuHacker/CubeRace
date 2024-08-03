@@ -12,6 +12,11 @@ public class SkinManager : MonoBehaviour
     public List<SkinData> SkinList = new List<SkinData>();
     public Text coinText;
     public SkinData currentSkinedEquiped;
+    public Transform hatPoint;
+    public GameObject model;
+    public GameObject canvasShop;
+
+
 
     public static SkinManager instance;
 
@@ -30,8 +35,17 @@ public class SkinManager : MonoBehaviour
     {
         SkinList.Add(SavedSystem.instance.defaultSkin);
         UpdateSkinToSell(skins);
+ 
+        Renderer playerRend = model.GetComponent<Renderer>();
+        playerRend.enabled = true;
+
+        playerRend.sharedMaterial = currentSkinedEquiped.skinMaterial;
+
     }
 
+
+
+   
     public void UpdateSkinToSell(SkinData[] skins)
     {
         for (int i = 0; i < SellButtonsParent.childCount; i++)
@@ -70,6 +84,10 @@ public class SkinManager : MonoBehaviour
     private void Update()
     {
         coinText.text = "COINS : " + StateNameController.spheraCount;
+        Renderer playerRend = model.GetComponent<Renderer>();
+        playerRend.enabled = true;
+
+        playerRend.sharedMaterial = currentSkinedEquiped.skinMaterial;
     }
 
 

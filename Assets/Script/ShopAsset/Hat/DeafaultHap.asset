@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af9c52ebc6bb29f439fced10446f6f4c, type: 3}
   m_Name: DeafaultHap
   m_EditorClassIdentifier: 
-  nameHat: 
+  nameHat: DefaultHat
   priceHat: 0
-  hatSprite: {fileID: 0}
-  hatPrefab: {fileID: 0}
+  hatSprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  hatPrefab: {fileID: 3853277341245438290, guid: 56d14dd6cbec5a2439f24ef93ff0171d, type: 3}

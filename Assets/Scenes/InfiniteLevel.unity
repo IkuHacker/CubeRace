@@ -3161,7 +3161,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinManager: {fileID: 0}
+  hatManager: {fileID: 0}
   defaultSkin: {fileID: 0}
+  defaultHat: {fileID: 0}
   isInGame: 1
 --- !u!1 &1046300394
 GameObject:
@@ -5931,7 +5933,7 @@ MonoBehaviour:
   explosionForce: 50
   explosionRadius: 4
   explosionUpward: 0.4
-  blue: {fileID: 2100000, guid: 13fc4ca9ced13084ca2e19e8d2764d7b, type: 2}
+  hatPoint: {fileID: 0}
   isEndlessRunner: 0
 --- !u!4 &7480735008763864851
 Transform:

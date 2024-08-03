@@ -11,6 +11,8 @@ public class MainMenu : MonoBehaviour
     public GameObject skinPanel;
     public GameObject hatPanel;
 
+    public GameObject buttonCanva;
+
 
     public void StartGame()
     {
@@ -30,11 +32,14 @@ public class MainMenu : MonoBehaviour
     public void OpenShopButton()
     {
         shopWindow.SetActive(true);
+        buttonCanva.SetActive(false);
     }
 
     public void CloseShopWindow()
     {
         shopWindow.SetActive(false);
+        buttonCanva.SetActive(true);
+
     }
 
     public void OpenHatPanel()

@@ -30,6 +30,10 @@ public class SellButtonSkin : MonoBehaviour
 
         if (SkinManager.instance.SkinList.Contains(skinData))
         {
+            Renderer playerRend = SkinManager.instance.model.GetComponent<Renderer>();
+            playerRend.enabled = true;
+            playerRend.sharedMaterial = skinData.skinMaterial;
+
             SkinManager.instance.currentSkinedEquiped = skinData;
             StateNameController.currentMaterialEquiped = skinData.skinMaterial;
         }

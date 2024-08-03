@@ -11,6 +11,8 @@ public class HatManager : MonoBehaviour
     public GameObject SellButtonPrefab;
     public List<HatData> hatList = new List<HatData>();
     public HatData currentHatEquiped;
+    public GameObject hatOnModel;
+    public GameObject canvasShop;
 
     public static HatManager instance;
 
@@ -27,8 +29,22 @@ public class HatManager : MonoBehaviour
 
     void Start()
     {
+        canvasShop.SetActive(true);
+
         UpdateSkinToSell(hats);
         hatList.Add(SavedSystem.instance.defaultHat);
+        if(currentHatEquiped == null) 
+        {
+            currentHatEquiped = SavedSystem.instance.defaultHat;
+        }
+        GameObject hatObject = Instantiate(currentHatEquiped.hatPrefab, SkinManager.instance.hatPoint.position, Quaternion.identity);
+        hatObject.transform.parent = SkinManager.instance.hatPoint;
+        hatObject.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+
+        hatOnModel = hatObject;
+
+        canvasShop.SetActive(false);
+
     }
 
     public void UpdateSkinToSell(HatData[] hats)
