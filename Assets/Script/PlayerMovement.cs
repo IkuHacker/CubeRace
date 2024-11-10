@@ -5,9 +5,9 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     public float continuousSpeed = 5f;
     public float jumpForce = 10f;
-    public float coyoteTime = 0.2f; // Time window for coyote time
-    public float jumpBufferTime = 0.2f; // Time window for jump buffer
-    public float maxJumpTime = 0.5f; // Maximum time the player can hold the jump button to go higher
+    public float coyoteTime = 0.2f;
+    public float jumpBufferTime = 0.2f;
+    public float maxJumpTime = 0.5f;
     public bool isGrounded;
 
     private float horizontalMovement;
@@ -20,6 +20,17 @@ public class PlayerMovement : MonoBehaviour
     private bool isHoldingJump;
 
     public static PlayerMovement instance;
+
+    // Reference to the TrailRenderer component
+    public TrailRenderer trailRenderer;
+    public ParticleSystem particleSystemPlayer;
+
+    // Reference to the current material of the player
+    public Material currentMaterial;
+    public float darkFactor;
+
+    public Animator playerAnimator;
+
 
     private void Awake()
     {
@@ -34,11 +45,28 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        particleSystemPlayer.Play();
+
         rb = GetComponent<Rigidbody>();
+
+        // Initialize the TrailRenderer and currentMaterial references
+        if (trailRenderer == null)
+        {
+            trailRenderer = GetComponent<TrailRenderer>();
+        }
+        if (currentMaterial == null)
+        {
+            currentMaterial = GetComponent<Renderer>().material;
+        }
+
+        // Set the initial trail color to the opposite color of the current material
     }
 
     private void Update()
     {
+        currentMaterial = GetComponent<Renderer>().material;
+        UpdateTrailColor();
+
         horizontalMovement = Input.GetAxis("Horizontal") * speed;
 
         // Coyote time counter update
@@ -95,6 +123,17 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer(horizontalMovement);
+
+        if (isJumping) 
+        {
+            playerAnimator.SetBool("isJumping", true);
+            Debug.Log("Stretch");
+        }
+        else 
+        {
+            playerAnimator.SetBool("isJumping", false);
+
+        }
     }
 
     private void MovePlayer(float _horizontalMovement)
@@ -107,8 +146,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            playerAnimator.SetBool("isOnGround", true);
             isGrounded = true;
-            isJumping = false; // Reset jumping state when hitting the ground
+            isJumping = false;
         }
     }
 
@@ -116,7 +156,27 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            playerAnimator.SetBool("isOnGround", false);
             isGrounded = false;
+        }
+    }
+
+    // Method to calculate and set the opposite color
+    private void UpdateTrailColor()
+    {
+        if (currentMaterial != null && trailRenderer != null)
+        {
+            Color currentColor = currentMaterial.color;
+            Color oppositeColor = new Color(1f - currentColor.r, 1f - currentColor.g, 1f - currentColor.b);
+
+            // Réduire l'intensité pour obtenir une couleur plus foncée
+            Color darkerOppositeColor = new Color(oppositeColor.r * darkFactor, oppositeColor.g * darkFactor, oppositeColor.b * darkFactor);
+
+            trailRenderer.startColor = oppositeColor;
+            trailRenderer.endColor = oppositeColor;
+
+            var mainModule = particleSystemPlayer.main;
+            mainModule.startColor = darkerOppositeColor;
         }
     }
 }

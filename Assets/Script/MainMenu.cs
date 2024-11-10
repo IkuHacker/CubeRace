@@ -11,12 +11,23 @@ public class MainMenu : MonoBehaviour
     public GameObject skinPanel;
     public GameObject hatPanel;
 
+    public Transform hatPanelTransform;
+    public Transform skinPanelTransform;
+
     public GameObject buttonCanva;
+    public Animator cameraAnimator;
 
 
     public void StartGame()
     {
         SceneManager.LoadScene(levelToLoad);
+    }
+
+    public void TriggerCamera()
+    {
+        shopWindow.SetActive(false);
+        buttonCanva.SetActive(false);
+        cameraAnimator.SetTrigger("Start");
     }
 
     public void OpenSettingsButton()
@@ -31,14 +42,16 @@ public class MainMenu : MonoBehaviour
 
     public void OpenShopButton()
     {
-        shopWindow.SetActive(true);
+        cameraAnimator.SetBool("GoShop", true);
         buttonCanva.SetActive(false);
     }
 
     public void CloseShopWindow()
     {
+        cameraAnimator.SetBool("GoShop", false);
         shopWindow.SetActive(false);
         buttonCanva.SetActive(true);
+
 
     }
 
@@ -47,12 +60,18 @@ public class MainMenu : MonoBehaviour
         skinPanel.SetActive(false);
         hatPanel.SetActive(true);
 
+        hatPanelTransform.SetAsLastSibling(); // Met le panneau des chapeaux au-dessus
+        skinPanelTransform.SetAsFirstSibling(); // 
+
     }
 
     public void OpenSkinPanel()
     {
         skinPanel.SetActive(true);
         hatPanel.SetActive(false);
+
+        skinPanelTransform.SetAsLastSibling(); // Met le panneau des skins au-dessus
+        hatPanelTransform.SetAsFirstSibling();
     }
 
 

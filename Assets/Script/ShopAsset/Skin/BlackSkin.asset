@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1cab08c11287b14d840ab3ef6337dca, type: 3}
   m_Name: BlackSkin
   m_EditorClassIdentifier: 
-  nameSkin: Black
   priceSkin: 0
-  skinSprite: {fileID: 1250429846, guid: b402210fa60ea7b448f30c168fb7fe05, type: 3}
+  skinSprite: {fileID: 1089967662, guid: 3bf2d8f29b3cfdf42ac94893decbeb59, type: 3}
   skinMaterial: {fileID: 2100000, guid: 16de3a419e9b77f488b8afbdff3cd92f, type: 2}

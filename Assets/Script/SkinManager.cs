@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 
@@ -10,7 +11,9 @@ public class SkinManager : MonoBehaviour
     public Transform SellButtonsParent;
     public GameObject SellButtonPrefab;
     public List<SkinData> SkinList = new List<SkinData>();
-    public Text coinText;
+    public TextMeshProUGUI coinTextMainMenu;
+    public TextMeshProUGUI coinTextShop;
+
     public SkinData currentSkinedEquiped;
     public Transform hatPoint;
     public GameObject model;
@@ -33,19 +36,25 @@ public class SkinManager : MonoBehaviour
 
     void Start()
     {
-        SkinList.Add(SavedSystem.instance.defaultSkin);
+        canvasShop.SetActive(true);
+
         UpdateSkinToSell(skins);
  
         Renderer playerRend = model.GetComponent<Renderer>();
         playerRend.enabled = true;
 
-        playerRend.sharedMaterial = currentSkinedEquiped.skinMaterial;
+        if (currentSkinedEquiped != null)
+        {
+            playerRend.sharedMaterial = currentSkinedEquiped.skinMaterial;
+
+        }
+        canvasShop.SetActive(false);
 
     }
 
 
 
-   
+
     public void UpdateSkinToSell(SkinData[] skins)
     {
         for (int i = 0; i < SellButtonsParent.childCount; i++)
@@ -57,15 +66,14 @@ public class SkinManager : MonoBehaviour
         {
             GameObject button = Instantiate(SellButtonPrefab, SellButtonsParent);
             SellButtonSkin buttonSkin = button.GetComponent<SellButtonSkin>();
-            buttonSkin.skinName.text = skins[i].nameSkin;
             buttonSkin.skinVisual.sprite = skins[i].skinSprite;
-            buttonSkin.priceText.text = skins[i].priceSkin.ToString() + " SPHERA";
+            buttonSkin.priceText.text = skins[i].priceSkin.ToString();
             buttonSkin.skinData = skins[i];
-
-            if (SkinList.Contains(skins[i]))
+            if (currentSkinedEquiped == skins[i])
             {
-                buttonSkin.SellButton.interactable = false;
+                buttonSkin.selection.SetActive(true);
             }
+            Debug.Log(currentSkinedEquiped);
 
         }
     }
@@ -83,11 +91,19 @@ public class SkinManager : MonoBehaviour
 
     private void Update()
     {
-        coinText.text = "COINS : " + StateNameController.spheraCount;
+        coinTextMainMenu.text = StateNameController.spheraCount.ToString();
+        coinTextShop.text = StateNameController.spheraCount.ToString();
+
+        StateNameController.spheraCount = 100; //Ligen a retiré
+
         Renderer playerRend = model.GetComponent<Renderer>();
         playerRend.enabled = true;
 
-        playerRend.sharedMaterial = currentSkinedEquiped.skinMaterial;
+        if(currentSkinedEquiped != null) 
+        {
+            playerRend.sharedMaterial = currentSkinedEquiped.skinMaterial;
+
+        }
     }
 
 

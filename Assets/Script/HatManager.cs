@@ -45,6 +45,8 @@ public class HatManager : MonoBehaviour
 
         canvasShop.SetActive(false);
 
+
+
     }
 
     public void UpdateSkinToSell(HatData[] hats)
@@ -60,12 +62,12 @@ public class HatManager : MonoBehaviour
             SellButtonHat buttonHat = button.GetComponent<SellButtonHat>();
             buttonHat.hatName.text = hats[i].nameHat;
             buttonHat.hatVisual.sprite = hats[i].hatSprite;
-            buttonHat.priceText.text = hats[i].priceHat.ToString() + " SPHERA";
+            buttonHat.priceText.text = hats[i].priceHat.ToString();
             buttonHat.hatData = hats[i];
 
-            if (hatList.Contains(hats[i]))
+            if(currentHatEquiped == hats[i]) 
             {
-                buttonHat.SellButton.interactable = false;
+                buttonHat.selection.SetActive(true);
             }
 
         }

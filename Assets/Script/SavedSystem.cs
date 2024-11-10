@@ -11,6 +11,8 @@ public class SavedSystem : MonoBehaviour
     public HatData defaultHat;
 
     public bool isInGame;
+    public bool isInLevelSelector;
+    private int levelReached;
 
     public static SavedSystem instance;
 
@@ -35,7 +37,11 @@ public class SavedSystem : MonoBehaviour
             LoadData();
             StartCoroutine(SavedIncOntinue());
         }
-     
+
+        if (isInLevelSelector) 
+        { 
+
+        }
         
     }
 
@@ -77,8 +83,11 @@ public class SavedSystem : MonoBehaviour
             savedData.currentHat = defaultHat;
         }
 
-        hatManager.currentHatEquiped = savedData.currentHat;
         skinManager.currentSkinedEquiped = savedData.currentSkin;
+        hatManager.currentHatEquiped = savedData.currentHat;
+
+        skinManager.UpdateSkinToSell(skinManager.skins);
+        hatManager.UpdateSkinToSell(hatManager.hats);
         StateNameController.currentMaterialEquiped = skinManager.currentSkinedEquiped.skinMaterial;
 
         StateNameController.currentHatEquiped = hatManager.currentHatEquiped.hatPrefab;
@@ -110,7 +119,7 @@ public class SavedSystem : MonoBehaviour
 
     }
 
-
+    
 
     IEnumerator SavedIncOntinue()
     {
@@ -138,7 +147,7 @@ public class SavedData
     public List<HatData> hats;
     public SkinData currentSkin;
     public HatData currentHat;
-
+    public int levelReached;
 
 
 }

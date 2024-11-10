@@ -9,27 +9,53 @@ public class SellButtonSkin : MonoBehaviour
 {
     public SkinData skinData;
     public Image skinVisual;
-    public Text skinName;
     public Text priceText;
-    public Button SellButton;
+    public GameObject selection;
 
     public void BuySkin() 
     {
+        if (SkinManager.instance.SkinList.Contains(skinData)) 
+        {
+            EquipedSkin();
+            return;
+        }
         if (StateNameController.spheraCount >= skinData.priceSkin)
         {
             StateNameController.spheraCount -= skinData.priceSkin;
             StateNameController.currentMaterialEquiped = skinData.skinMaterial;
             SkinManager.instance.SkinList.Add(skinData);
-            SellButton.interactable = false;
+            EquipedSkin();
         } 
     }
 
 
     public void EquipedSkin()
     {
-
-        if (SkinManager.instance.SkinList.Contains(skinData))
+        Debug.Log("Objet équipé");
+        GameObject[] selectionObjects = GameObject.FindGameObjectsWithTag("SelectionSkin");
+        foreach (GameObject obj in selectionObjects)
         {
+            if (obj != selection) // Ne pas désactiver l'objet actuel "selection"
+            {
+                obj.SetActive(false);
+            }
+        }
+
+
+        if (selection.activeSelf)
+        {
+            selection.SetActive(false);
+            Renderer playerRend = SkinManager.instance.model.GetComponent<Renderer>();
+            playerRend.enabled = true;
+            playerRend.sharedMaterial = SavedSystem.instance.defaultSkin.skinMaterial;
+
+            SkinManager.instance.currentSkinedEquiped = SavedSystem.instance.defaultSkin;
+            StateNameController.currentMaterialEquiped = SavedSystem.instance.defaultSkin.skinMaterial;
+        }
+        else
+        {
+            // Assurez-vous que tous les anciens skins sont désactivés/détruits ici.
+            selection.SetActive(true);
             Renderer playerRend = SkinManager.instance.model.GetComponent<Renderer>();
             playerRend.enabled = true;
             playerRend.sharedMaterial = skinData.skinMaterial;
@@ -37,5 +63,8 @@ public class SellButtonSkin : MonoBehaviour
             SkinManager.instance.currentSkinedEquiped = skinData;
             StateNameController.currentMaterialEquiped = skinData.skinMaterial;
         }
+
+
     }
+
 }
